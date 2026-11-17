@@ -10,7 +10,7 @@ interface DataStatusProps {
 export function DataStatus({ status, onRetry }: DataStatusProps) {
   if (status === 'loading') return <PageLoader />
   return (
-    <div role="alert" className="flex flex-col items-center gap-4 rounded-xl border border-destructive/30 p-12 text-center">
+    <div role="alert" className="flex flex-col items-center gap-4 glass rounded-2xl border border-destructive/30 p-12 text-center">
       <p className="text-sm text-destructive">We could not load your data.</p>
       <Button variant="outline" onClick={onRetry}>
         Try again

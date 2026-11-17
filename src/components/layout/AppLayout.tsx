@@ -15,9 +15,9 @@ export function AppLayout() {
   useNotificationSync()
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       {/* Persistent sidebar on desktop */}
-      <aside className="fixed inset-y-0 left-0 hidden w-64 border-r bg-card lg:block">
+      <aside className="glass fixed inset-y-3 left-3 hidden w-64 overflow-hidden rounded-3xl lg:block">
         <SidebarNav />
       </aside>
 
@@ -29,8 +29,8 @@ export function AppLayout() {
         </SheetContent>
       </Sheet>
 
-      <div className="lg:pl-64">
-        <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b bg-background/95 px-4 backdrop-blur">
+      <div className="lg:pl-72">
+        <header className="glass sticky top-3 z-30 mx-3 mt-3 flex h-14 items-center gap-3 rounded-2xl px-4 md:mx-8 lg:ml-0 lg:mr-8">
           <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open navigation" onClick={() => setDrawerOpen(true)}>
             <Menu className="size-5" />
           </Button>

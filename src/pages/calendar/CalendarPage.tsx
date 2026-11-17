@@ -109,7 +109,7 @@ export default function CalendarPage() {
           <Button variant="outline" size="sm" disabled={!ready} onClick={exportToCalendar} title={`Download the next ${EXPORT_HORIZON_DAYS / 365} year of payments, premiums and expiries, with reminders, to add to Google, Apple or Outlook calendar`}>
             <Download /> Export (.ics)
           </Button>
-        <div role="group" aria-label="Show" className="flex gap-1 rounded-lg border p-1">
+        <div role="group" aria-label="Show" className="glass flex gap-1 rounded-xl p-1">
           {FILTERS.map(({ value, label }) => (
             <Button
               key={value}
@@ -138,7 +138,7 @@ export default function CalendarPage() {
               You haven&apos;t added any subscriptions or policies yet. Their dates will appear here once you do.
             </p>
           )}
-          <div className="rounded-xl border p-2 sm:p-4">
+          <div className="glass rounded-2xl p-2 sm:p-4">
             <FullCalendar
               plugins={[dayGridPlugin, multiMonthPlugin]}
               initialView="dayGridMonth"

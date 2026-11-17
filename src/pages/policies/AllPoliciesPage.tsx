@@ -80,11 +80,11 @@ export default function AllPoliciesPage() {
         <>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[1fr_10rem_11rem_10rem_8rem]">
             <div className="relative">
-              <Search className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
+              <Search className="pointer-events-none absolute top-1/2 left-3 z-10 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 aria-label="Search policies"
                 placeholder="Search by name, company, number…"
-                className="pl-8"
+                className="pl-9"
                 value={search}
                 onChange={(e) => {
                   setSearch(e.target.value)
@@ -146,7 +146,7 @@ export default function AllPoliciesPage() {
             <EmptyState message="No policies match your search or filters." />
           ) : (
             <>
-              <div className="rounded-xl border">
+              <div className="glass overflow-hidden rounded-2xl">
                 <Table>
                   <TableHeader>
                     <TableRow>

@@ -34,7 +34,7 @@ export function SidebarNav({ onNavigate }: SidebarNavProps) {
               </NavLink>
             )}
             {children && (
-              <div className="ml-4 space-y-1 border-l pl-3">
+              <div className="ml-4 space-y-1 border-l border-foreground/10 pl-3">
                 {children.map((child) => (
                   <NavLink key={child.to} to={child.to} end onClick={onNavigate} className={linkClass}>
                     {child.label}
@@ -46,7 +46,7 @@ export function SidebarNav({ onNavigate }: SidebarNavProps) {
         ))}
       </nav>
 
-      <div className="flex items-center gap-2 border-t p-3">
+      <div className="flex items-center gap-2 border-t border-foreground/10 p-3">
         <div className="min-w-0 flex-1 px-2">
           <p className="truncate text-sm font-medium">{profile?.fullName}</p>
           <p className="truncate text-xs text-muted-foreground">{profile?.email}</p>
@@ -61,9 +61,9 @@ export function SidebarNav({ onNavigate }: SidebarNavProps) {
 
 function linkClass({ isActive }: { isActive: boolean }) {
   return cn(
-    'flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors',
+    'flex items-center gap-3 rounded-xl px-3 py-2 text-sm transition-colors',
     isActive
-      ? 'bg-accent font-medium text-accent-foreground'
-      : 'text-muted-foreground hover:bg-accent/60 hover:text-accent-foreground',
+      ? 'bg-accent font-medium text-accent-foreground shadow-[inset_0_1px_0_var(--glass-shine)]'
+      : 'text-muted-foreground hover:bg-white/50 hover:text-foreground dark:hover:bg-white/10',
   )
 }

@@ -102,7 +102,7 @@ export default function PolicyDetailsPage() {
         {policy.renewals.length === 0 ? (
           <EmptyState message="This policy has not been renewed yet." />
         ) : (
-          <div className="rounded-xl border">
+          <div className="glass overflow-hidden rounded-2xl">
             <Table>
               <TableHeader>
                 <TableRow>

@@ -13,7 +13,7 @@ import { Input } from '@/components/ui/input'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { useSubscriptionData } from '@/hooks/useSubscriptionData'
 import type { Subscription } from '@/types/subscription'
-import { BILLING_CYCLE_CONFIG } from '@/utils/billing'
+import { annualEquivalent, BILLING_CYCLE_CONFIG } from '@/utils/billing'
 import { formatDisplayDate } from '@/utils/dates'
 import { formatMoney } from '@/utils/money'
 import {
@@ -87,11 +87,11 @@ export default function AllSubscriptionsPage() {
         <>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[1fr_12rem_12rem_8rem]">
             <div className="relative">
-              <Search className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
+              <Search className="pointer-events-none absolute top-1/2 left-3 z-10 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 aria-label="Search subscriptions"
                 placeholder="Search by name, provider, category…"
-                className="pl-8"
+                className="pl-9"
                 value={search}
                 onChange={(e) => {
                   setSearch(e.target.value)
@@ -141,13 +141,14 @@ export default function AllSubscriptionsPage() {
             <EmptyState message="No subscriptions match your search or filters." />
           ) : (
             <>
-              <div className="rounded-xl border">
+              <div className="glass overflow-hidden rounded-2xl">
                 <Table>
                   <TableHeader>
                     <TableRow>
                       <TableHead>Name</TableHead>
                       <TableHead>Category</TableHead>
                       <TableHead>Amount</TableHead>
+                      <TableHead>Yearly amount</TableHead>
                       <TableHead>Next payment</TableHead>
                       <TableHead>Status</TableHead>
                       <TableHead className="text-right">Actions</TableHead>
@@ -167,6 +168,7 @@ export default function AllSubscriptionsPage() {
                           {formatMoney(sub.amountMinor, sub.currency)}
                           <span className="text-xs text-muted-foreground"> / {BILLING_CYCLE_CONFIG[sub.billingCycle].label.toLowerCase()}</span>
                         </TableCell>
+                        <TableCell className="whitespace-nowrap">{formatMoney(annualEquivalent(sub.amountMinor, sub.billingCycle), sub.currency)}</TableCell>
                         <TableCell>{sub.status === 'active' ? formatDisplayDate(sub.nextPaymentDate) : '—'}</TableCell>
                         <TableCell>
                           <SubscriptionStatusBadge status={sub.status} />

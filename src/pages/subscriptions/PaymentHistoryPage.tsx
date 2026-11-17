@@ -47,11 +47,11 @@ export default function PaymentHistoryPage() {
         <>
           <div className="grid gap-3 sm:grid-cols-[1fr_12rem]">
             <div className="relative">
-              <Search className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
+              <Search className="pointer-events-none absolute top-1/2 left-3 z-10 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 aria-label="Search by subscription"
                 placeholder="Search by subscription name…"
-                className="pl-8"
+                className="pl-9"
                 value={search}
                 onChange={(e) => {
                   setSearch(e.target.value)

@@ -54,7 +54,7 @@ scenario(
           await setValue(document.querySelector('#amount'), '15.49')
           await setValue(document.querySelector('#currency'), 'USD')
           await submitDialog()
-          await waitFor(() => has('Netflix') && has('$15.49') && has('Active') && !document.querySelector('#name'), 'row in table, dialog closed')
+          await waitFor(() => has('Netflix') && has('$15.49') && has('Yearly amount') && has('$185.88') && has('Active') && !document.querySelector('#name'), 'row in table, dialog closed')
         })
 
         await check('search / status filter / empty-result message', async () => {

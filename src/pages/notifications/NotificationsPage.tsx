@@ -54,7 +54,7 @@ export default function NotificationsPage() {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <div role="group" aria-label="Show" className="flex gap-1 rounded-lg border p-1">
+          <div role="group" aria-label="Show" className="glass flex gap-1 rounded-xl p-1">
             <Button size="sm" variant={unreadOnly ? 'ghost' : 'default'} aria-pressed={!unreadOnly} onClick={() => { setUnreadOnly(false); setPage(1) }}>
               All
             </Button>

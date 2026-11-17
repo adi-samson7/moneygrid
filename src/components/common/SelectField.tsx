@@ -3,7 +3,7 @@ import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
 
 export const selectClassName =
-  'h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive dark:bg-input/30'
+  'h-9 w-full rounded-xl border border-input bg-(--field) shadow-[inset_0_1px_2px_oklch(0.3_0.04_265/0.07)] backdrop-blur-sm px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive dark:bg-input/30'
 
 interface SelectFieldProps extends ComponentProps<'select'> {
   label: string

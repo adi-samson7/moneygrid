@@ -40,7 +40,7 @@ export function PaymentsTable<T extends PaymentRecord>({
 
   return (
     <>
-      <div className="rounded-xl border">
+      <div className="glass overflow-hidden rounded-2xl">
         <Table>
           <TableHeader>
             <TableRow>

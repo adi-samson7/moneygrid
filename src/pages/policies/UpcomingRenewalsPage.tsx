@@ -63,7 +63,7 @@ export default function UpcomingRenewalsPage() {
             {renewals.length === 0 ? (
               <EmptyState message="No policies are close to expiry." />
             ) : (
-              <div className="rounded-xl border">
+              <div className="glass overflow-hidden rounded-2xl">
                 <Table>
                   <TableHeader>
                     <TableRow>
