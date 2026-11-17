@@ -3,6 +3,8 @@
 Track recurring subscriptions and insurance policies in one place: payments, premiums, renewals,
 a combined dashboard and a calendar. See the product requirements for the full scope.
 
+**Live site: https://moneygrid-xi.vercel.app** (Firebase Authentication and Cloud Firestore, hosted on Vercel).
+
 **Two modes.** By default everything runs in the browser: sign-in is a **mock** and data is saved in
 `localStorage`. Built with `VITE_BACKEND=firebase`, the same app uses Firebase Authentication and Cloud
 Firestore. See [docs/FIREBASE_SETUP.md](docs/FIREBASE_SETUP.md) to create the Firebase project and deploy.
@@ -18,8 +20,9 @@ Other scripts: `npm test` (run all tests once), `npm run test:watch`, `npm run t
 the Firebase emulators), `npm run emulators` and `npm run dev:emulator` (run the app against the emulators),
 `npm run build` (type-check + production build), `npm run lint`, `npm run deploy:rules`.
 
-Register any email and password (8+ characters) to get started. "Continue with Google" signs in to a
-shared demo account. Password reset shows its link on screen because no email is sent.
+In the default local mode, register any email and password (8+ characters) to get started. There,
+"Continue with Google" signs in to a shared demo account and password reset shows its link on screen,
+because nothing is sent. On the live site (Firebase mode) both are real: Google sign-in and a reset email.
 
 ## What is built
 
@@ -33,7 +36,23 @@ shared demo account. Password reset shows its link on screen because no email is
 | 6 | Calendar: month/week/year, payments, premiums, expiries, module filter | Done |
 | 7 | In-app notifications, calendar export (.ics) | Done |
 | 8 | Analytics page, test suite, error handling, hardening, optimisation | Done (Firebase-specific testing waits for phase 9) |
-| 9 | Firebase (Auth, Firestore, security rules) and deployment config | Code done and tested against the emulators; needs your Firebase project and Vercel account (see the setup guide) |
+| 9 | Firebase (Auth, Firestore, security rules) and deployment | Done and live at https://moneygrid-xi.vercel.app |
+
+## Deployment
+
+The site is deployed from this repository (`master` branch) to Vercel; every push to `master` redeploys it.
+
+- **Build settings:** Vercel detects Vite. [vercel.json](vercel.json) sends every path to `index.html` (so refreshing
+  any page works), sets security headers, and proxies `/__/auth/*` to Firebase so Google sign-in runs on the
+  site's own address.
+- **Environment variables** (Vercel > Settings > Environment Variables; values are in the Firebase console):
+  `VITE_BACKEND=firebase`, `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN` (the Vercel address, without
+  `https://`), `VITE_FIREBASE_PROJECT_ID`, `VITE_FIREBASE_APP_ID`. Changing a variable needs a redeploy.
+- **Firebase:** the site's address is listed under Authentication > Settings > Authorized domains. For Google
+  sign-in on that address, the Google Cloud OAuth client lists `https://<address>` as an authorized origin and
+  `https://<address>/__/auth/handler` as a redirect URI.
+- **Security rules** are deployed separately with `npm run deploy:rules`.
+- Real settings live in `.env.local`, which is git-ignored. Never commit it.
 
 ## How the data works
 
@@ -87,8 +106,7 @@ works end to end on Firebase.
 
 What the tests do **not** cover: jsdom has no layout engine, so they check behaviour and content, not
 how pages look at different screen sizes. Check the layout on a phone-width window yourself. They also run
-against emulators, not a live Firebase project, so the first deployment still needs the checklist in the
-setup guide.
+against emulators and never touch a live Firebase project (the test setup refuses to start one).
 
 Tests live in `src/__tests__/`; shared helpers are in `src/test/`.
 
