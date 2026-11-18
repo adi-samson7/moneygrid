@@ -1,17 +1,19 @@
 import { useSyncExternalStore } from 'react'
 
-/** Light, dark, or follow the device setting. The choice is remembered in this browser. */
+/** Light, dark, or follow the device setting. The choice is remembered in this browser; dark until chosen. */
 export type ThemePreference = 'light' | 'dark' | 'system'
 export type ResolvedTheme = 'light' | 'dark'
 
 const STORAGE_KEY = 'moneygrid-theme'
+/** What a first-time visitor sees. "system" is a choice people make explicitly. */
+const DEFAULT_THEME: ThemePreference = 'dark'
 
 function readPreference(): ThemePreference {
   try {
     const value = localStorage.getItem(STORAGE_KEY)
-    return value === 'light' || value === 'dark' ? value : 'system'
+    return value === 'light' || value === 'dark' || value === 'system' ? value : DEFAULT_THEME
   } catch {
-    return 'system' // storage can be blocked (private windows)
+    return DEFAULT_THEME // storage can be blocked (private windows)
   }
 }
 
@@ -53,8 +55,7 @@ export function initTheme(): void {
 export function setTheme(next: ThemePreference): void {
   preference = next
   try {
-    if (next === 'system') localStorage.removeItem(STORAGE_KEY)
-    else localStorage.setItem(STORAGE_KEY, next)
+    localStorage.setItem(STORAGE_KEY, next)
   } catch {
     // The choice still applies for this visit.
   }
@@ -69,6 +70,6 @@ const subscribe = (listener: () => void) => {
 }
 
 export function useTheme(): { preference: ThemePreference; resolved: ResolvedTheme; setTheme: typeof setTheme } {
-  const current = useSyncExternalStore(subscribe, () => preference, () => 'system' as ThemePreference)
+  const current = useSyncExternalStore(subscribe, () => preference, () => DEFAULT_THEME)
   return { preference: current, resolved: resolveTheme(current), setTheme }
 }

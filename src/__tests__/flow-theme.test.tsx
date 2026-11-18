@@ -33,7 +33,7 @@ scenario(
         await setValue(select, 'dark')
         await waitFor(() => isDark(), 'dark from settings')
         await setValue(select, 'system')
-        await waitFor(() => !isDark() && localStorage.getItem('moneygrid-theme') === null, 'follows the device again')
+        await waitFor(() => !isDark() && localStorage.getItem('moneygrid-theme') === 'system', 'follows the device again (jsdom reports a light device)')
       })
     } finally {
       await h.stop()

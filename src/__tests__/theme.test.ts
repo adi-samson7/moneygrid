@@ -19,11 +19,18 @@ describe('theme', () => {
     assert.equal(localStorage.getItem('moneygrid-theme'), 'light')
   })
 
-  test('"system" forgets the saved choice and follows the device', () => {
+  test('"system" is remembered as a choice and follows the device', () => {
     setTheme('dark')
     setTheme('system')
-    assert.equal(localStorage.getItem('moneygrid-theme'), null)
-    assert.equal(isDark(), resolveTheme('system') === 'dark')
+    assert.equal(localStorage.getItem('moneygrid-theme'), 'system')
+    assert.equal(isDark(), resolveTheme('system') === 'dark') // jsdom reports a light device
+    assert.equal(isDark(), false)
+  })
+
+  test('a first-time visitor gets dark mode', () => {
+    initTheme()
+    assert.equal(isDark(), true)
+    assert.equal(localStorage.getItem('moneygrid-theme'), null, 'nothing is saved until they choose')
   })
 
   test('the saved choice is applied on start-up, and junk values are ignored', () => {
@@ -32,7 +39,10 @@ describe('theme', () => {
     assert.equal(isDark(), true)
     localStorage.setItem('moneygrid-theme', 'purple')
     initTheme()
-    assert.equal(isDark(), false) // jsdom reports a light device
+    assert.equal(isDark(), true) // unknown values fall back to the default, dark
+    localStorage.setItem('moneygrid-theme', 'light')
+    initTheme()
+    assert.equal(isDark(), false)
   })
 
   test('blocked storage does not break switching', () => {
