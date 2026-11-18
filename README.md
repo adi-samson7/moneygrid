@@ -16,6 +16,7 @@ Track recurring subscriptions and insurance policies, know exactly what is due a
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06b6d4?logo=tailwindcss&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-Auth%20%2B%20Firestore-ffca28?logo=firebase&logoColor=black)
 ![Vitest](https://img.shields.io/badge/tests-Vitest-6e9f18?logo=vitest&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 <br />
 
@@ -226,3 +227,7 @@ firestore.rules security rules
   The `.ics` export is the workaround: import it and your calendar app does the reminding.
 - **No currency conversion.** Totals are shown per currency.
 - The theme and sidebar choices are stored per browser, not per account.
+
+## License
+
+Released under the [MIT License](LICENSE).
