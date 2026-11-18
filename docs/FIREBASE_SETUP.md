@@ -7,8 +7,8 @@ The app runs in two modes, chosen when it is built:
 | **Local** (default) | `npm run dev`, the normal tests | Mock, kept in the browser | `localStorage` |
 | **Firebase** | `VITE_BACKEND=firebase` | Firebase Authentication | Cloud Firestore |
 
-Everything needed for Firebase mode is written and tested. What is left needs **your** Firebase and
-Vercel accounts, so it is listed step by step below.
+This guide walks through setting up your own Firebase project, enabling sign-in, deploying the security rules
+and going live on Vercel, step by step.
 
 ## 1. Try Firebase mode locally (no account needed)
 
