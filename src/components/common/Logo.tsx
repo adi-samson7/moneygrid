@@ -26,7 +26,7 @@ export function Logo({ size = 'md', stacked = false, className }: LogoProps) {
         className={cn('shrink-0 rounded-[22%] shadow-[0_6px_18px_-6px_oklch(0.4_0.2_280/0.55)]', s.mark)}
       />
       <span className={s.text}>
-        Money <span className="bg-gradient-to-r from-violet-500 to-blue-500 bg-clip-text text-transparent">Grid</span>
+        Money<span className="bg-gradient-to-r from-violet-500 to-blue-500 bg-clip-text text-transparent">Grid</span>
       </span>
     </span>
   )

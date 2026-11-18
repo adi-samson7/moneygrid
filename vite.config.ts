@@ -21,5 +21,8 @@ export default defineConfig(({ mode }) => ({
     exclude: ['**/node_modules/**', '**/*.emulator.test.{ts,tsx}'],
     // Browser-flow tests boot the whole app, so they get more time than unit tests.
     testTimeout: 60_000,
+    // Each flow test boots the whole app. Running them all at once on a busy machine makes the in-test
+    // waits time out, so keep the number of parallel workers modest.
+    maxWorkers: 4,
   },
 }))

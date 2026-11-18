@@ -15,11 +15,11 @@ import { paginate } from '@/utils/subscription-list'
 const PAGE_SIZE = 10
 
 const KIND_ICONS: Record<NotificationKind, { icon: LucideIcon; className: string }> = {
-  subscription_due: { icon: CalendarClock, className: 'text-blue-600' },
-  premium_due: { icon: ShieldCheck, className: 'text-emerald-600' },
-  policy_expiring: { icon: ShieldAlert, className: 'text-amber-600' },
-  payment_overdue: { icon: AlertTriangle, className: 'text-red-600' },
-  payment_paid: { icon: CheckCircle2, className: 'text-emerald-600' },
+  subscription_due: { icon: CalendarClock, className: 'text-blue-600 dark:text-blue-400' },
+  premium_due: { icon: ShieldCheck, className: 'text-emerald-600 dark:text-emerald-400' },
+  policy_expiring: { icon: ShieldAlert, className: 'text-amber-600 dark:text-amber-400' },
+  payment_overdue: { icon: AlertTriangle, className: 'text-red-600 dark:text-red-400' },
+  payment_paid: { icon: CheckCircle2, className: 'text-emerald-600 dark:text-emerald-400' },
 }
 
 export default function NotificationsPage() {

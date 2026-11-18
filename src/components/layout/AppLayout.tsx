@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
 import { useNotificationSync } from '@/hooks/useNotificationSync'
 import { NotificationBell } from './NotificationBell'
+import { ThemeToggle } from './ThemeToggle'
 import { SidebarNav } from './SidebarNav'
 
 export function AppLayout() {
@@ -37,6 +38,7 @@ export function AppLayout() {
           </Button>
           <Logo size="sm" className="lg:hidden" />
           <div className="flex-1" />
+          <ThemeToggle />
           <NotificationBell />
         </header>
 

@@ -5,6 +5,7 @@ import { toast } from 'sonner'
 import { FormField } from '@/components/common/FormField'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { AppearanceCard } from '@/components/settings/AppearanceCard'
 import { NotificationPreferencesCard } from '@/components/settings/NotificationPreferencesCard'
 import { Label } from '@/components/ui/label'
 import { profileSchema, type ProfileInput } from '@/schemas/auth.schema'
@@ -94,6 +95,8 @@ export default function SettingsPage() {
           </form>
         </CardContent>
       </Card>
+
+      <AppearanceCard />
 
       <NotificationPreferencesCard />
     </div>
