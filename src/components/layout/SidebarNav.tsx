@@ -1,5 +1,6 @@
 import { LogOut } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
+import { Logo } from '@/components/common/Logo'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { navigation } from '@/routes/navigation'
@@ -16,8 +17,8 @@ export function SidebarNav({ onNavigate }: SidebarNavProps) {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex h-16 items-center px-6 text-lg font-semibold tracking-tight">
-        Money Grid
+      <div className="flex h-16 items-center px-5">
+        <Logo />
       </div>
       <nav className="flex-1 space-y-1 overflow-y-auto px-3 pb-6" aria-label="Main">
         {navigation.map(({ label, to, icon: Icon, children }) => (

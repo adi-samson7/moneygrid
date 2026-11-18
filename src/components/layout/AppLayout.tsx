@@ -1,6 +1,7 @@
 import { Suspense, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Menu } from 'lucide-react'
+import { Logo } from '@/components/common/Logo'
 import { PageLoader } from '@/components/common/PageLoader'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
@@ -34,7 +35,7 @@ export function AppLayout() {
           <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open navigation" onClick={() => setDrawerOpen(true)}>
             <Menu className="size-5" />
           </Button>
-          <span className="font-semibold lg:hidden">Money Grid</span>
+          <Logo size="sm" className="lg:hidden" />
           <div className="flex-1" />
           <NotificationBell />
         </header>
