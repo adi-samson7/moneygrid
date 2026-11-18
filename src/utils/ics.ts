@@ -9,7 +9,7 @@ import type { NotificationSource } from './notification-rules'
  * similar apps and needs no server. It is a snapshot: re-export to refresh it.
  */
 
-const PRODID = '-//Money Grid//EN'
+const PRODID = '-//MoneyGrid//EN'
 const UID_DOMAIN = 'subscription-policy-manager.local'
 /** How far ahead to export. */
 export const EXPORT_HORIZON_DAYS = 365
@@ -78,9 +78,9 @@ function summaryFor(event: CalendarEventData): string {
 function descriptionFor(event: CalendarEventData): string {
   switch (event.kind) {
     case 'subscription_payment':
-      return 'Subscription payment. Mark it as paid in Money Grid once done.'
+      return 'Subscription payment. Mark it as paid in MoneyGrid once done.'
     case 'policy_premium':
-      return 'Policy premium. Mark it as paid in Money Grid once done.'
+      return 'Policy premium. Mark it as paid in MoneyGrid once done.'
     case 'policy_expiry':
       return 'Renew this policy before it expires so you stay covered.'
   }
@@ -120,7 +120,7 @@ export function buildIcs(
     `PRODID:${PRODID}`,
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
-    `X-WR-CALNAME:${escapeIcsText('Money Grid')}`,
+    `X-WR-CALNAME:${escapeIcsText('MoneyGrid')}`,
   ]
   const stamp = utcStamp(now)
 

@@ -1,4 +1,4 @@
-# Money Grid
+# MoneyGrid
 
 Track recurring subscriptions and insurance policies in one place: payments, premiums, renewals,
 a combined dashboard and a calendar. See the product requirements for the full scope.

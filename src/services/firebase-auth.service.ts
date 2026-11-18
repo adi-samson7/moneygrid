@@ -6,6 +6,7 @@ import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signInWithRedirect,
   signOut,
   updateProfile,
   type User,
@@ -90,8 +91,19 @@ async function login(email: string, password: string): Promise<AuthUser> {
 
 async function signInWithGoogle(): Promise<AuthUser> {
   const { auth } = getFirebase()
-  const credential = await guarded(() => signInWithPopup(auth, new GoogleAuthProvider()))
-  return toAuthUser(credential.user)
+  const provider = new GoogleAuthProvider()
+  try {
+    const credential = await signInWithPopup(auth, provider)
+    return toAuthUser(credential.user)
+  } catch (error) {
+    // A browser can block the sign-in popup. Fall back to signing in on a full page, which cannot be
+    // blocked and brings the visitor back to the site; the auth listener then picks the user up.
+    if ((error as { code?: string } | null)?.code === 'auth/popup-blocked') {
+      await guarded(() => signInWithRedirect(auth, provider))
+      return new Promise<AuthUser>(() => {}) // the page is navigating away
+    }
+    throw translate(error)
+  }
 }
 
 async function logout(): Promise<void> {

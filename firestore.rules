@@ -1,6 +1,6 @@
 rules_version = '2';
 
-// Money Grid: Firestore security rules.
+// MoneyGrid: Firestore security rules.
 //
 // Everything lives under users/{uid}/. A signed-in user can read and write only their own subtree.
 // Writes are validated: exact field sets, types, allowed values and sizes. Anything not matched

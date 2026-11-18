@@ -13,7 +13,7 @@ interface LogoProps {
   className?: string
 }
 
-/** The Money Grid mark and name. The image is decorative because the name sits right next to it. */
+/** The MoneyGrid mark and name. The image is decorative because the name sits right next to it. */
 export function Logo({ size = 'md', stacked = false, className }: LogoProps) {
   const s = SIZES[size]
   return (
