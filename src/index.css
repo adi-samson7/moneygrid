@@ -149,6 +149,17 @@
   color-scheme: dark;
 }
 
+/*
+ * The list that opens from a native <select> is drawn by the browser. Without these it keeps a white
+ * background while the options inherit the theme text colour, which makes them unreadable in dark mode.
+ * --background is a solid colour, unlike the translucent glass surfaces.
+ */
+select option,
+select optgroup {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
